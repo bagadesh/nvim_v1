@@ -17,7 +17,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {'rust_analyzer'},
+	ensure_installed = {'rust_analyzer', 'gopls', 'marksman', 'kotlin_language_server'},
 	handlers = {
 		lsp_zero.default_setup,
 		lua_ls = function()
@@ -27,6 +27,7 @@ require('mason-lspconfig').setup({
 	}
 })
 
+require('lspconfig').marksman.setup{}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
