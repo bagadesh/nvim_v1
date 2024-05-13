@@ -28,4 +28,15 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.api.nvim_create_autocmd("BufRead", {
+    pattern = "*.md",
+    callback = function(args)
+        vim.opt.colorcolumn = "0"
+        vim.opt.wrap = true
+    end
+})
+
+
+vim.opt.colorcolumn = "100"
+vim.api.nvim_set_var('netrw_banner', 0)
+vim.opt.conceallevel = 1
