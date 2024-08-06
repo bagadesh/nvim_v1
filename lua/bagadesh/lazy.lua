@@ -41,7 +41,7 @@ require("lazy").setup(
             workspaces = {
                 {
                     name = "personal",
-                    path = "~/Documents/bagadesh_notes/bagadesh_learn",
+                    path = "/Users/bagadesh.r/Documents/mine/notes/office",
                 },
             },
             ui = {
@@ -75,17 +75,25 @@ require("lazy").setup(
     {'hsanson/vim-android'},
     {
         "OXY2DEV/markview.nvim",
-        lazy = false,      -- Recommended
-        -- ft = "markdown" -- If you decide to lazy-load anyway
+        lazy = false,
 
         dependencies = {
-            -- You will not need this if you installed the
-            -- parsers manually
-            -- Or if the parsers are in your $RUNTIMEPATH
             "nvim-treesitter/nvim-treesitter",
-
             "nvim-tree/nvim-web-devicons"
-        }
+        },
+        config = function() 
+            require("markview").setup({
+                modes = { "n", "i", "no", "c" },
+
+                -- This is nice to have
+                callbacks = {
+                    on_enable = function (_, win)
+                        vim.wo[win].conceallevel = 2;
+                        vim.wo[win].conecalcursor = "nc";
+                    end
+                }
+            })
+        end
     },
     {
         "0xstepit/flow.nvim",
@@ -130,8 +138,7 @@ require("lazy").setup(
                             }
                         }
                     }
-                }
-            }
+                }            }
             vim.cmd "colorscheme kanagawa-wave"
         end
     }
