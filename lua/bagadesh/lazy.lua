@@ -45,7 +45,7 @@ require("lazy").setup(
                 },
             },
             ui = {
-                enable = true,
+                enable = false,
                 checkboxes = {
                     [" "] = { char = "☐", hl_group = "ObsidianTodo" },
                     ["x"] = { char = "✔", hl_group = "ObsidianDone" },
@@ -73,6 +73,68 @@ require("lazy").setup(
         },
     },
     {'hsanson/vim-android'},
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,      -- Recommended
+        -- ft = "markdown" -- If you decide to lazy-load anyway
+
+        dependencies = {
+            -- You will not need this if you installed the
+            -- parsers manually
+            -- Or if the parsers are in your $RUNTIMEPATH
+            "nvim-treesitter/nvim-treesitter",
+
+            "nvim-tree/nvim-web-devicons"
+        }
+    },
+    {
+        "0xstepit/flow.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            require("flow").setup{
+                transparent = false, -- Set transparent background.
+                fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
+                mode = "normal", -- Intensity of the palette: normal, bright, desaturate, or dark. Notice that dark is ugly!
+                aggressive_spell = false, -- Display colors for spell check.
+            }
+
+            --- vim.cmd "colorscheme flow"
+        end,
+    },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function ()
+            require("tokyonight").setup {
+
+            }
+            ---vim.cmd "colorscheme tokyonight-night"
+        end
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function ()
+            require("kanagawa").setup {
+                colors = {
+                    theme = {
+                        all = {
+                            ui = {
+                                bg_gutter = "none"
+                            }
+                        }
+                    }
+                }
+            }
+            vim.cmd "colorscheme kanagawa-wave"
+        end
+    }
 })
 
 
